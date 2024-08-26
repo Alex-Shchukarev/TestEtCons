@@ -9,7 +9,7 @@
         aria-describedby="url-help"
         @blur="blurInput"
         @change="changeValue"
-        @keyup.native.enter="endEditing"
+        @keydown.enter="endEditing"
       />
       <small v-if="isCorrect" id="url-help">URL введен некорректно</small>
     </div>
@@ -29,7 +29,7 @@ import { defineComponent, ref, computed } from 'vue'
 import InputText from 'primevue/inputtext'
 
 export default defineComponent({
-  name: 'InputLink',
+  name: 'CustomInputLink',
   components: { InputText },
   props: {
     id: {

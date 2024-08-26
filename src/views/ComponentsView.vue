@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import TheTaskOne from '../components/TheTaskOne.vue'
+import TheTaskTwo from '../components/TheTaskTwo.vue'
+import TheTaskThree from '../components/TheTaskThree.vue'
+import TheTaskFour from '../components/TheTaskFour.vue'
 </script>
 
 <template>
@@ -10,15 +13,15 @@ import TheTaskOne from '../components/TheTaskOne.vue'
     </li>
     <li class="item">
       <span class="item_title">2. DateTime picker</span>
-      <TheTaskOne msg="Vite + Vue" />
+      <TheTaskTwo />
     </li>
     <li class="item">
       <span class="item_title">3. Сброс значений в Select</span>
-      <TheTaskOne msg="Vite + Vue" />
+      <TheTaskThree />
     </li>
     <li class="item">
       <span class="item_title">4. Многострочный текст в ячейке</span>
-      <TheTaskOne msg="Vite + Vue" />
+      <TheTaskFour />
     </li>
     <li class="item">
       <span class="item_title">5. Таблица с поиском (расширенное задание)</span>

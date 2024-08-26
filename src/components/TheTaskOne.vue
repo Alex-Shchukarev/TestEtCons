@@ -3,7 +3,7 @@
     <div class="task_1__description">
       Поле предназначено для отображения ссылок на форме редактирования.
     </div>
-    <InputLink
+    <CustomInputLink
       id="InputLink"
       :modelValue="modelValue"
       placeholder="https://"
@@ -15,11 +15,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import InputLink from './InputLink.vue'
+import CustomInputLink from './CustomUiComponents/CustomInputLink.vue'
 
 export default defineComponent({
   name: 'TheTaskOne',
-  components: { InputLink },
+  components: { CustomInputLink },
   setup() {
     const modelValue = ref('')
     const changeValue = (val: any): void => { if (typeof val === 'string') { modelValue.value = val } }
@@ -35,4 +35,4 @@ export default defineComponent({
   margin-bottom: 12px;
   color: #888;
 }
-</style>
+</style>./CustomUiComponents/InputLink.vue./CustomUiComponents/CustomInputLink.vue
