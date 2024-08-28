@@ -3,7 +3,6 @@
     <div v-if="isEdit" class="editable_field">
       <InputText
         :id="`InputText_${id}`"
-        ref="inputLinkRef"
         v-model="inputLink"
         :placeholder="placeholder"
         aria-describedby="url-help"
@@ -16,7 +15,7 @@
     <div v-else class="disactive_field">
       <span :class="getClass" @click="goToLink">{{ titleLink ? titleLink : inputLink }}</span>
       <img
-        src="../assets/edit.svg"
+        src="../../assets/edit.svg"
         alt="edit"
         @click="editActive"
       >
@@ -46,13 +45,12 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
-    const inputLinkRef = ref(null)
     const isEdit = ref(true)
     const isCorrect = ref(false)
     const inputLink = ref(props.modelValue)
     const titleLink = ref('')
     const getClass = computed(() => titleLink.value ? 'title_link' : '')
-    const changeValue = (): void => { 
+    const checkLink = (): void => {
       const idx: number = inputLink.value.indexOf(`${props.placeholder}`)
       if (idx === -1 || idx > 0) { isCorrect.value = true }
       else {
@@ -60,14 +58,21 @@ export default defineComponent({
         isCorrect.value = false
         isEdit.value = false
       }
+    }
+    const changeValue = (): void => { 
+      checkLink()
       emit(`change`, inputLink.value)
     }
     const editActive = (): void => { isEdit.value = true }
     const blurInput = (): void => { if (inputLink.value === '') { isCorrect.value = false } }
-    const endEditing = (): void => { inputLinkRef?.value?.$el?.blur() }
+    const endEditing = (): void => {
+      checkLink() 
+      const elemInput: HTMLInputElement | null = document.querySelector(`#InputText_${props.id}`)
+      elemInput?.blur()
+    }
     const goToLink = (): void => { emit('goToLink') }
 
-    return { inputLinkRef, isEdit, isCorrect, inputLink, titleLink, getClass, changeValue, editActive, blurInput, endEditing, goToLink }
+    return { isEdit, isCorrect, inputLink, titleLink, getClass, changeValue, editActive, blurInput, endEditing, goToLink }
   }
 })
 </script>
