@@ -3,6 +3,7 @@ import TheTaskOne from '../components/TheTaskOne.vue'
 import TheTaskTwo from '../components/TheTaskTwo.vue'
 import TheTaskThree from '../components/TheTaskThree.vue'
 import TheTaskFour from '../components/TheTaskFour.vue'
+import TheTaskFive from '../components/TheTaskFive.vue'
 </script>
 
 <template>
@@ -25,7 +26,7 @@ import TheTaskFour from '../components/TheTaskFour.vue'
     </li>
     <li class="item">
       <span class="item_title">5. Таблица с поиском (расширенное задание)</span>
-      <TheTaskOne msg="Vite + Vue" />
+      <TheTaskFive />
     </li>
   </ul>
 </template>
